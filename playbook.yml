@@ -1,7 +1,7 @@
 
 ---
 - name: Example Playbook basic
-  hosts: none
+  hosts: webservers
   gather_facts: true
   tasks:
     - name: Print a message
