@@ -8,7 +8,7 @@
       ansible.builtin.dnf:
         name: httpd
         state: present
-        
+
     - name: Crear directorio /srv/website
       ansible.builtin.file:
         path: /srv/website
@@ -17,7 +17,7 @@
 
     - name: Copiar archivo app.js
       ansible.builtin.copy:
-        src: /projects/rh294/index.html
+        src: index.html
         dest: /srv/website
 
     - name: Revisar si el paquete firewalld está desinstalado
