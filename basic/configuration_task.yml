@@ -7,7 +7,7 @@
     - name: Crear directorio /srv/website
       ansible.builtin.file:
         path: /srv/website
-        state: present
+        state: directory
         owner: apache
 
     - name: Copiar archivo app.js
