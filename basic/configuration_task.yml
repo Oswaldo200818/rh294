@@ -8,12 +8,13 @@
       ansible.builtin.file:
         path: /srv/website
         owner: apache
+        state: present
 
     - name: Copiar archivo app.js
       ansible.builtin.copy:
         src: /projects/rh294/index.html
         dest: /srv/website
-        
+
     - name: Revisar si el paquete firewalld está desinstalado
       ansible.builtin.dnf:
         name: firewalld
