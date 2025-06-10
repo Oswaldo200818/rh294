@@ -4,13 +4,16 @@
   become: yes
 
   tasks:
+    - name: Instalar apache 
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+        
     - name: Crear directorio /srv/website
       ansible.builtin.file:
         path: /srv/website
         state: directory
         owner: apache
-        group: apache
-        mode: '0755'
 
     - name: Copiar archivo app.js
       ansible.builtin.copy:
