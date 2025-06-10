@@ -1,0 +1,21 @@
+---
+- name: Generar varias configuraciones 
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Crear directorio /srv/website
+      ansible.builtin.file:
+        path: /srv/website
+        owner: apache
+
+    - name: Copiar archivo app.js
+      ansible.builtin.copy:
+        src: /projects/rh294/index.html
+        dest: /srv/website
+        
+    - name: Revisar si el paquete firewalld está desinstalado
+      ansible.builtin.dnf:
+        name: firewalld
+        state: absent
+
