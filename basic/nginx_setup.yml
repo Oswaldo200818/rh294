@@ -1,6 +1,6 @@
 ---
 - name: Instalar y configurar Nginx
-  hosts: websesrvers
+  hosts: webservers
   become: yes
 
   tasks:
@@ -14,4 +14,3 @@
         name: nginx
         state: started #Idempotencia: solo lo inicia si está parado
         enabled: yes   #Idempotencia: solo lo habilita si está deshabilitado
-        
