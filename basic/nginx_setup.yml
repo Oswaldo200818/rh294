@@ -1,0 +1,17 @@
+---
+- name: Instalar y configurar Nginx
+  hosts: websesrvers
+  become: yes
+
+  tasks:
+    - name: Instalar el paquete Nginx
+      ansible.builtin.dnf:
+        name: nginx 
+        state: present #Idempotencia: solo lo instala si no está
+
+    - name: Habilitar e iniciar el servicio Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started #Idempotencia: solo lo inicia si está parado
+        enabled: yes   #Idempotencia: solo lo habilita si está deshabilitado
+        

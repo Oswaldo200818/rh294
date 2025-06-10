@@ -1,0 +1,9 @@
+
+---
+- name: Example Playbook basic
+  hosts: webservers
+  gather_facts: false
+  tasks:
+    - name: Print a message
+      ansible.builtin.debug:
+        msg: "Hello, Ansible!"
