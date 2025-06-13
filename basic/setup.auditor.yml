@@ -2,10 +2,12 @@
 - name: Playbook para crear un usuario
   hosts: webservers
   become: yes
+  vars:
+    nombre_de_usuario: auditor
 
   tasks:
     - name: Crear usuario auditor
       ansible.builtin.user:
-        name: auditor
+        name: " {{ nombre_de_usuario }}"
         state: present 
         
