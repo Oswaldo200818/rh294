@@ -5,13 +5,14 @@
   vars:
     paquete_a_instalar: nginx
     usuario_del_servicio: nginx
+
   tasks:
     - name: "Instalar el paquete {{ paquete_a_instalar:}}"
-      ansible_builtin_dnf:
+      ansible.builtin.dnf:
         name: {{ paquete_a_instalar }}
         state: present 
     
     - name: "Crear un directorio para el usuario {{ usuario_del_servicio }}"
-      ansible_builtin_file:
+      ansible.builtin.file:
         path: "/opt{{ usuario_del_servicio }}_data"
         state: directory
