@@ -8,6 +8,6 @@
   tasks:
     - name: Crear usuario auditor
       ansible.builtin.user:
-        name: " {{ nombre_de_usuario }}"
+        name: "{{ nombre_de_usuario }}"
         state: present 
         
