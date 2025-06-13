@@ -5,6 +5,6 @@
 
   tasks: 
     - name: Verificar nodo gestionado
-      ansible_builtin_debug:
+      ansible.builtin.debug:
         msg: "Este servidor tiene {{ ansible_memtotal_mb }} MB de RAM"
       when: ansible_memtotal_mb > 4096
