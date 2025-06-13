@@ -1,0 +1,17 @@
+---
+- name: Instalar software usando variables
+  hosts: webservers
+  become: yes
+  vars:
+    paquete_a_instalar: nginx
+    usuario_del_servicio: nginx
+  tasks:
+    - name: "Instalar el paquete {{ paquete_a_instalar:}}"
+      ansible_builtin_dnf:
+        name: {{ paquete_a_instalar }}
+        state: present 
+    
+    - name: "Crear un directorio para el usuario {{ usuario_del_servicio }}"
+      ansible_builtin_file:
+        path: "/opt{{ usuario_del_servicio }}_data"
+        state: directory

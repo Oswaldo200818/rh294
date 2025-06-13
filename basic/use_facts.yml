@@ -1,0 +1,12 @@
+---
+- name: Crear un mensaje de bienvenidad personalizado
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Generar un archivo motd usando hechos
+      ansible.builtin.copy:
+        content: |
+          Bienvenido a {{ ansible_hostanme }}
+          Este sistema es {{ ansible_distribution }} {{ ansible_distribution_version }}
+          Su IP es {{ ansible_default_ipv4.address }}.
+        dest: /etc/motd
