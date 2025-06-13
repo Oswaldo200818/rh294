@@ -10,4 +10,9 @@
       ansible.builtin.user:
         name: "{{ nombre_de_usuario }}"
         state: present 
+    
+    - name: Mostrar mensaje de bienvenida
+      ansible.builtin.debug:
+        msg:
+        - "El sistame operativo de este host es '{{ ansible_hostname }}'"
         
