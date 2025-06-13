@@ -1,0 +1,17 @@
+---
+- name: Instalar Apache en cualquier familia de SO
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Instalar Apache en sistemas familia Red Hat
+      ansible.builtin.dnf:
+        name: httpd 
+        state: present 
+      when: ansible_os_family == "RedHat"
+
+    - name: Instalar Apache en sistemas familia Debian
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
