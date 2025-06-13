@@ -7,7 +7,7 @@
     usuario_del_servicio: nginx
 
   tasks:
-    - name: "Instalar el paquete {{ paquete_a_instalar:}}"
+    - name: "Instalar el paquete {{ paquete_a_instalar }}"
       ansible.builtin.dnf:
         name: "{{ paquete_a_instalar }}"
         state: present 
