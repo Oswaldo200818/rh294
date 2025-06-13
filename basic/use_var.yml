@@ -9,10 +9,10 @@
   tasks:
     - name: "Instalar el paquete {{ paquete_a_instalar:}}"
       ansible.builtin.dnf:
-        name: {{ paquete_a_instalar }}
+        name: "{{ paquete_a_instalar }}"
         state: present 
     
     - name: "Crear un directorio para el usuario {{ usuario_del_servicio }}"
       ansible.builtin.file:
-        path: "/opt{{ usuario_del_servicio }}_data"
+        path: "/opt/{{ usuario_del_servicio }}_data"
         state: directory
