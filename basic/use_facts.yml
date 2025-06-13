@@ -6,7 +6,7 @@
     - name: Generar un archivo motd usando hechos
       ansible.builtin.copy:
         content: |
-          Bienvenido a {{ ansible_hostanme }}
+          Bienvenido a {{ ansible_hostname }}
           Este sistema es {{ ansible_distribution }} {{ ansible_distribution_version }}
           Su IP es {{ ansible_default_ipv4.address }}.
         dest: /etc/motd
