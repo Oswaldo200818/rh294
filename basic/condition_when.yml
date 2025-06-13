@@ -1,0 +1,10 @@
+---
+- name: Ejecución de facts estándar
+  hosts: webservers
+  gather_facts: yes
+
+  tasks: 
+    - name: Verificar nodo gestionado
+      ansible_builtin_debug:
+        msg: "Este servidor tiene {{ ansible_memtotal_mb }} MB de RAM"
+      when: ansible_memtotal_mb > 4096
