@@ -1,6 +1,7 @@
 ---
 - name: Practica de condiciones
   hosts: webservers
+  gather_facts: yes
 
   tasks: 
     - name: Enviar mensaje si se cumple la condiciÓN
