@@ -1,0 +1,13 @@
+---
+- name: Practica de bucle for 
+  hosts: webservers
+  become: yes
+
+  tasks: 
+    - name: Verify service in enabled
+      ansible.builtin.service:
+        name: "{{ item.service_name }}"
+        state: started
+      loop:
+        - { service_name: 'crond' }
+        - { service_name: 'sshd' }
