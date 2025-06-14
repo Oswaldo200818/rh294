@@ -1,0 +1,25 @@
+---
+- name: Gestionar servicio solo si el paquete está instalado
+  hosts: webservers
+  become: yes
+
+  tasks:
+    # Comprueba el estado del paquete httpd y REGISTRA el resultado
+    - name: Comprobar si el paquete httpd está instalado
+      ansible.builtin.command: "rpm -q httpd"
+      register: httpd_package_check
+      ignore_errors: yes # Ignoramos el error si rpm -q falla ( no está instalado)
+      changed_when: yes # Este comando no hace cambios
+    
+    # Muestra la variable registrada (útil para depurar)
+    - name: Mostrar resultado de la comprobración
+      ansible.builtin.debug:
+        var: httpd_package_check
+
+    # Usa el resultado como CONDICIÓN para la siguiente tarea
+    - name: Iniciar el servicio httpd
+      ansible.builtin.service:
+        name: httpd 
+        state: started
+      when: httpd_package_check.rc == 0 #.rc es el código de retorno. 0 = éxito (está instalado)
+      
