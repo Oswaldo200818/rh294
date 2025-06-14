@@ -1,0 +1,14 @@
+---
+- name: Practica de bucles
+  hosts: webservers 
+  become: yes
+
+  tasks: 
+    - name: Creación de un directorio a traves de un bucle 
+      ansible.builtin.file:
+        path: '/var/www/{{ item }}'
+        state: directory
+      loop:
+        - site1
+        - site2 
+        - site3
