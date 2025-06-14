@@ -1,0 +1,15 @@
+---
+- name: Demostración de bucles
+  hosts: webservers
+  become: yes
+
+  tasks: 
+    - name: Instalar un conjunto de herramientas
+      ansible.builtin.dnf:
+        name: "{{ item }}" # en cada pasada item, será un paquete diferente
+        state: present
+      loop:
+        - htop
+        - tmux
+        - git
+        -
