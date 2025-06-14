@@ -9,6 +9,6 @@
         name: "{{ item }}" # en cada pasada item, será un paquete diferente
         state: present
       loop:
-        - htop
+        - vim
         - tmux
         - git
