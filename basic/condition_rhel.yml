@@ -1,6 +1,7 @@
 ---
 - name: Practica de condiciones
   hosts: webservers
+  become: yes
   gather_facts: yes
 
   tasks: 

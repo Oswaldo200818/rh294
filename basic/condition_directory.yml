@@ -1,0 +1,4 @@
+---
+- name: Practica de condiciones con when
+  hosts: webservers
+  
