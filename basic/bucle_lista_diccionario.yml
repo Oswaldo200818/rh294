@@ -11,6 +11,6 @@
         groups: "wheel"
         state: present
       loop:
-        - { username: 'jdoe', uid: 1001 }
-        - { username: 'psmith', uid: 1002 }
+        - { username: 'jdoe', uid: 1004 }
+        - { username: 'psmith', uid: 1005 }
         - { username: 'rroe', uid: 1003 }
