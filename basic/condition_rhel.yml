@@ -1,0 +1,10 @@
+---
+- name: Practica de condiciones
+  hosts: webservers
+
+  tasks: 
+    - name: Enviar mensaje si se cumple la condiciÓN
+      ansible.builtin.debug:
+        msg: " Este servidor es físico {{ ansible_virtualization_type }}"
+      when: ansible_virtualization_type == "phsical"
+  
