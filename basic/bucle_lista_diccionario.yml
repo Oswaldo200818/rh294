@@ -1,0 +1,16 @@
+---
+- name: Crear varios usuarios con datos específicos
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Asegurar que los usuarios de proyecto existan
+      ansible.builtin.user:
+        name: "{{ item.username }}"
+        uid: " {{ item.uid }}"
+        groups: "wheel"
+        state: present
+      loop:
+        - { username: 'jdoe', uid: 1001 }
+        - { username: 'psmith', uid: 1002 }
+        - { username: 'rroe', uid: 1003 }
