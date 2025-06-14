@@ -1,4 +1,17 @@
 ---
 - name: Practica de condiciones con when
   hosts: webservers
-  
+  become: yes
+
+  tasks:
+    - name: Play de condición si se ha creado un directorio
+      ansible.builtin.file:
+        path: /etc
+        state: directory 
+      register: create_directory_info
+
+    - name: imprime mensaje 
+      ansible.builtin.debug:
+        msg: 
+          - "El directorio ya existía"
+      when: not create_directory_info.changed
