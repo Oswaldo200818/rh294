@@ -4,7 +4,7 @@
   become: yes
 
   vars:
-    enable_debugging: true 
+    enable_debugging: false 
 
   tasks: 
     - name: Generar el archivo app.conf desde la plantilla 
@@ -15,4 +15,3 @@
         group: root 
         mode: '0644'
 
-        
