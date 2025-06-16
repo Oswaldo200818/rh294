@@ -6,7 +6,7 @@
   tasks: 
     - name: Mostrar mensaje en el directorio /etc/issues
       ansible.builtin.template:
-        src: tempplates/issue.j2
+        src: templates/issue.j2
         dest: /etc/issues
         owner: root
         group: root 
