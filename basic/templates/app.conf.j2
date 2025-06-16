@@ -1,0 +1,11 @@
+{# Plantilla de configuración para app.conf #}
+# Este valor se establece dinámicamente.
+
+{% if enable_debugging == true %}
+debug_mode = ON
+{% else %}
+debug_mode = OFF
+{% endif %}
+
+# Fin de la configuración.
+  
