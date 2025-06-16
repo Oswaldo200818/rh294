@@ -1,0 +1,11 @@
+# Fichero de configuración de Chrony para {{ inventory_hostname}}
+# Generado y gestionado por Ansible 
+#
+#No editar manualmente 
+{# Este es un bucle 'for' de Jinja2. Itera sobre la lista 'ntp_servers'. #}
+{% for server in ntp_servers%}
+server {{ server }} iburst 
+{% endfor %}
+
+# Permitir a los clientes de la red local sincronizarse
+allow 192.168.223.0/24

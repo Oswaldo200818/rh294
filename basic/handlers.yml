@@ -1,0 +1,24 @@
+---
+- name: Configurar y asegurar SSHD
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Instalar el paquete OpenSSH server
+      ansible.builtin.dnf:
+        name: openssh-server
+        state: present
+
+    - name: "Copiar el archivo principal de configuración de sshd"
+      ansible.builtin.copy:
+        src: files/sshd_config
+        dest: /etc/ssh/sshd_config
+        owner: root 
+        group: root 
+        mode: '0600'
+      notify: Reiniciar sshd 
+  handlers:
+    - name: Reiniciar sshd 
+      ansible.builtin.service:
+        name: sshd 
+        state: restarted 
