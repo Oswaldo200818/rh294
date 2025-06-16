@@ -1,10 +1,12 @@
 ---
 - name: Desplegar configuración de NTP 
   hosts: webservers
-  vars: 
-    - 0.pool.ntp.org
-    - 1.pool.ntp.org
-    - 2.pool.ntp.org 
+  become: yes
+  vars:
+    ntp_servers: 
+      - 0.pool.ntp.org
+      - 1.pool.ntp.org
+      - 2.pool.ntp.org 
 
   tasks:
     - name: Generar chrony.conf desde la plantilla
@@ -21,4 +23,3 @@
       ansible.builtin.service:
         name: chronyd 
         state: restarted 
-        
