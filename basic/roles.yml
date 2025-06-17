@@ -1,0 +1,6 @@
+---
+- name: Configurar Nginx usando un rol de Galaxy
+  hosts: webservers
+  become: yes
+  roles:
+    - geerlingguy.nginx
