@@ -3,4 +3,4 @@
   hosts: webservers
   become: yes
   roles:
-    - /roles/geerlingguy.nginx
+    - geerlingguy.nginx
