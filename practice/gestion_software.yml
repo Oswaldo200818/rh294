@@ -16,6 +16,7 @@
     - name: Deshabilitar el repositorio epel
       ansible.builtin.yum_repository: 
         name: epel
+        description: EPEL 9
         baseurl: https://dl.fedoraproject.org/pub/epel/9/Everything/$basearch # <-- ¡Añade esta línea!
         gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9 # <-- Y esta también, si lo vas a definir como presente
         gpgcheck: yes # <-- Y esta
