@@ -1,0 +1,30 @@
+---
+- name: Gestión de software
+  hosts: testservers
+  become: yes
+
+  tasks:
+    - name: Verificar últimas versiones de paquetes
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - bash
+        - openssl
+        - policycoreutils
+
+    - name: Deshabilitar el repositorio epel
+      ansible.builtin.yum_repository: 
+        name: epel
+        enabled: no 
+        state: present 
+
+    - name: Eliminar repositorio EPEL
+      ansible.builtin.yum_repository:
+        name: epel
+        state: absent 
+    
+    - name: Eliminar paquete htop que depende del repositorio EPEL 
+      ansible.builtin.dnf: 
+        name: htop 
+        state: absent 
