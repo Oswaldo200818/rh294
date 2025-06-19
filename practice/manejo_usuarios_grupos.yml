@@ -1,0 +1,39 @@
+---
+- name: Gestión de usuarios y grupos
+  hosts: testservers
+  become: yes
+  vars:
+    - usuario_basico: "devops"
+    - grupo_basico: "developers"
+    - user_absent: "tempuser"
+    - group_absent: "oldgroup"
+
+
+  tasks:
+    - name: Creación de usuario básico
+      ansible.builtin.user:
+        name: "{{ usuario_basico }}"
+        shell: /bin/bash 
+        state: present 
+
+    - name: Crear grupo y asignar usuario 
+      ansible.builtin.group: 
+        name: "{{ grupo_basico }}"
+        state: present 
+
+    - name: Agrupar usuario y grupo 
+      ansible.builtin.user:
+        name: "{{ usuario_basico }}"
+        groups: "{{ grupo_basico }}"
+        append: yes
+        state: present 
+
+    - name: Elimar usuario tempuser
+      ansible.builtin.user:
+        name: "{{ user_absent }}"
+        state: absent 
+
+    - name: Eliminar grupo oldgroup 
+      ansible.builtin.group:
+        name: "{{ group_absent }}"
+        state: present 
