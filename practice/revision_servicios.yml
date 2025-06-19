@@ -1,0 +1,26 @@
+---
+- name: Administración básica de servicios 
+  hosts: testservers
+  become: yes
+
+  tasks: 
+    - name: Iniciar y habilitar un servicio 
+      ansible.builtin.service:
+        name: httpd 
+        state: started
+        enabled: yes
+
+    - name: Reinicar servicio sshd 
+      ansible.builtin.service:
+        name: sshd 
+        state: restarted
+
+    - name: Revisión de varias tareas
+      ansible.builtin.service:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+        enabled: "{{ item. enabled}}"
+      loop:
+        - { name: 'firewalld', state: 'stopped', enabled: false}
+        - { name: 'NetworkManager', state: 'started', enabled: true}
+        
