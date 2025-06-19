@@ -7,7 +7,7 @@
     - name: Instalar servicio
       ansible.builtin.dnf: 
         name: httpd
-        state: 
+        state: present
      
     - name: Iniciar y habilitar un servicio 
       ansible.builtin.service:
