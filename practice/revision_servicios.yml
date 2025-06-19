@@ -3,7 +3,12 @@
   hosts: testservers
   become: yes
 
-  tasks: 
+  tasks:
+    - name: Instalar servicio
+      ansible.builtin.service: 
+        name: httpd
+        state: 
+     
     - name: Iniciar y habilitar un servicio 
       ansible.builtin.service:
         name: httpd 
@@ -23,4 +28,4 @@
       loop:
         - { name: 'firewalld', state: 'stopped', enabled: false}
         - { name: 'NetworkManager', state: 'started', enabled: true}
-        
+
